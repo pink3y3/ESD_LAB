@@ -1,0 +1,140 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000  ; stack pointer val
+                                                            ue when stack is em
+                                                            pty
+    5 00000004 00000000        DCD              Reset_Handler ; reset vector
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000         
+   12 00000000 4805            LDR              R0,=NUM1
+   13 00000002 6801            LDR              R1,[R0]
+   14 00000004 4A05            LDR              R2,=NUM2
+   15 00000006 6813            LDR              R3,[R2]
+   16 00000008 4C05            LDR              R4,=SUM
+   17 0000000A 18CD            ADDS             R5,R1,R3
+   18 0000000C 6025            STR              R5,[R4]
+   19 0000000E         
+   20 0000000E         STOP
+   21 0000000E E7FE            B                STOP
+   22 00000010         
+   23 00000010 12345678 
+                       NUM1    DCD              0x12345678
+   24 00000014 ABCDEF12 
+                       NUM2    DCD              0xABCDEF12
+   25 00000018         
+   26 00000018 00000000 
+              00000000 
+              00000000         AREA             data, DATA, READWRITE
+   27 00000000         
+   28 00000000 00000000 
+                       SUM     DCD              0
+   29 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=ex1.d -o
+ex1.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\
+LPC17xx --predefine="__EVAL SETA 1" --list=ex1.lst ex1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file ex1.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file ex1.s
+   Uses
+      At line 2 in file ex1.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+NUM1 00000010
+
+Symbol: NUM1
+   Definitions
+      At line 23 in file ex1.s
+   Uses
+      At line 12 in file ex1.s
+Comment: NUM1 used once
+NUM2 00000014
+
+Symbol: NUM2
+   Definitions
+      At line 24 in file ex1.s
+   Uses
+      At line 14 in file ex1.s
+Comment: NUM2 used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file ex1.s
+   Uses
+      At line 5 in file ex1.s
+      At line 9 in file ex1.s
+
+STOP 0000000E
+
+Symbol: STOP
+   Definitions
+      At line 20 in file ex1.s
+   Uses
+      At line 21 in file ex1.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file ex1.s
+   Uses
+      None
+Comment: mycode unused
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+SUM 00000000
+
+Symbol: SUM
+   Definitions
+      At line 28 in file ex1.s
+   Uses
+      At line 16 in file ex1.s
+Comment: SUM used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 26 in file ex1.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+342 symbols in table

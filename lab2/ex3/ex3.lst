@@ -1,0 +1,168 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;divide a 32 bit number by 16 bit number
+    2 00000000         
+    3 00000000                 AREA             RESET, DATA, READONLY
+    4 00000000                 EXPORT           __Vectors
+    5 00000000         __Vectors
+    6 00000000 10001000        DCD              0x10001000  ; stack pointer val
+                                                            ue when stack is em
+                                                            pty
+    7 00000004 00000000        DCD              Reset_Handler ; reset vector
+    8 00000008                 ALIGN
+    9 00000008                 AREA             mycode, CODE, READONLY
+   10 00000000                 ENTRY
+   11 00000000                 EXPORT           Reset_Handler
+   12 00000000         
+   13 00000000         Reset_Handler
+   14 00000000         
+   15 00000000 480A            LDR              R0,=NUM1
+   16 00000002 6801            LDR              R1,[R0]
+   17 00000004 480A            LDR              R0,=NUM2
+   18 00000006 8802            LDRH             R2,[R0]
+   19 00000008 F04F 0300       MOV              R3,#0
+   20 0000000C         
+   21 0000000C         LOOP
+   22 0000000C 4291            CMP              R1,R2
+   23 0000000E D304            BLO              DONE
+   24 00000010 EBA1 0102       SUB              R1,R1,R2
+   25 00000014 F103 0301       ADD              R3,R3,#1
+   26 00000018 E7F8            B                LOOP
+   27 0000001A         
+   28 0000001A         DONE
+   29 0000001A 4C06            LDR              R4,=RES
+   30 0000001C 6023            STR              R3,[R4]
+   31 0000001E 6061            STR              R1,[R4,#4]
+   32 00000020         
+   33 00000020 E7FE    STOP    B                STOP
+   34 00000022         
+   35 00000022 00 00 00000020 
+                       NUM1    DCD              0x20
+   36 00000028 00000005 
+                       NUM2    DCD              0X0005
+   37 0000002C         
+   38 0000002C 00000000 
+              00000000 
+              00000000         AREA             data, DATA, READWRITE
+   39 00000000         
+   40 00000000 00000000 
+              00000000 RES     DCD              0,0
+                       
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=ex3.d -o
+ex3.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\
+LPC17xx --predefine="__EVAL SETA 1" --list=ex3.lst ex3.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 3 in file ex3.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 5 in file ex3.s
+   Uses
+      At line 4 in file ex3.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DONE 0000001A
+
+Symbol: DONE
+   Definitions
+      At line 28 in file ex3.s
+   Uses
+      At line 23 in file ex3.s
+Comment: DONE used once
+LOOP 0000000C
+
+Symbol: LOOP
+   Definitions
+      At line 21 in file ex3.s
+   Uses
+      At line 26 in file ex3.s
+Comment: LOOP used once
+NUM1 00000024
+
+Symbol: NUM1
+   Definitions
+      At line 35 in file ex3.s
+   Uses
+      At line 15 in file ex3.s
+Comment: NUM1 used once
+NUM2 00000028
+
+Symbol: NUM2
+   Definitions
+      At line 36 in file ex3.s
+   Uses
+      At line 17 in file ex3.s
+Comment: NUM2 used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 13 in file ex3.s
+   Uses
+      At line 7 in file ex3.s
+      At line 11 in file ex3.s
+
+STOP 00000020
+
+Symbol: STOP
+   Definitions
+      At line 33 in file ex3.s
+   Uses
+      At line 33 in file ex3.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 9 in file ex3.s
+   Uses
+      None
+Comment: mycode unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RES 00000000
+
+Symbol: RES
+   Definitions
+      At line 40 in file ex3.s
+   Uses
+      At line 29 in file ex3.s
+Comment: RES used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 38 in file ex3.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+344 symbols in table
