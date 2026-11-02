@@ -1,0 +1,200 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; Linear search in an array of ten 32-bit numbers
+    2 00000000         
+    3 00000000                 AREA             RESET, DATA, READONLY
+    4 00000000                 EXPORT           __Vectors
+    5 00000000         
+    6 00000000         __Vectors
+    7 00000000 10001000        DCD              0x10001000
+    8 00000004 00000000        DCD              Reset_Handler
+    9 00000008         
+   10 00000008                 ALIGN
+   11 00000008         
+   12 00000008                 AREA             mycode, CODE, READONLY
+   13 00000000                 ENTRY
+   14 00000000                 EXPORT           Reset_Handler
+   15 00000000         
+   16 00000000         Reset_Handler
+   17 00000000         
+   18 00000000 4811            LDR              R0,=NUMS    ; R0 = address of a
+                                                            rray
+   19 00000002 4912            LDR              R1,=KEY     ; R1 = address of k
+                                                            ey
+   20 00000004 680A            LDR              R2,[R1]     ; R2 = key value
+   21 00000006 F04F 030A       MOV              R3,#10      ; R3 = number of el
+                                                            ements
+   22 0000000A         
+   23 0000000A         LOOP
+   24 0000000A F850 4B04       LDR              R4,[R0],#4  ; Load one element 
+                                                            and move to next
+   25 0000000E 4294            CMP              R4,R2       ; Compare element w
+                                                            ith key
+   26 00000010 D002            BEQ              FOUND       ; If equal, key is 
+                                                            found
+   27 00000012         
+   28 00000012 1E5B            SUBS             R3,R3,#1    ; Decrease counter
+   29 00000014 D1F9            BNE              LOOP        ; Repeat if element
+                                                            s remain
+   30 00000016         
+   31 00000016         NOTFOUND
+   32 00000016 E000            B                STOP
+   33 00000018         
+   34 00000018         FOUND
+   35 00000018 E7FF            B                STOP
+   36 0000001A         
+   37 0000001A         STOP
+   38 0000001A E7FE            B                STOP
+   39 0000001C         
+   40 0000001C         
+   41 0000001C         NUMS
+   42 0000001C 00000001 
+              00000002 
+              00000003 
+              00000004 
+              00000005 
+              00000006 
+              00000007 
+              00000008 
+              00000009 
+              0000000A         DCD              1,2,3,4,5,6,7,8,9,10
+   43 00000044         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   44 00000044         KEY
+   45 00000044 00000003        DCD              3
+   46 00000048         
+   47 00000048 00000000 
+              00000000         AREA             data, DATA, READWRITE
+   48 00000000         
+   49 00000000                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=ex4.d -o
+ex4.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\
+LPC17xx --predefine="__EVAL SETA 1" --list=ex4.lst ex4.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 3 in file ex4.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 6 in file ex4.s
+   Uses
+      At line 4 in file ex4.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FOUND 00000018
+
+Symbol: FOUND
+   Definitions
+      At line 34 in file ex4.s
+   Uses
+      At line 26 in file ex4.s
+Comment: FOUND used once
+KEY 00000044
+
+Symbol: KEY
+   Definitions
+      At line 44 in file ex4.s
+   Uses
+      At line 19 in file ex4.s
+Comment: KEY used once
+LOOP 0000000A
+
+Symbol: LOOP
+   Definitions
+      At line 23 in file ex4.s
+   Uses
+      At line 29 in file ex4.s
+Comment: LOOP used once
+NOTFOUND 00000016
+
+Symbol: NOTFOUND
+   Definitions
+      At line 31 in file ex4.s
+   Uses
+      None
+Comment: NOTFOUND unused
+NUMS 0000001C
+
+Symbol: NUMS
+   Definitions
+      At line 41 in file ex4.s
+   Uses
+      At line 18 in file ex4.s
+Comment: NUMS used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 16 in file ex4.s
+   Uses
+      At line 8 in file ex4.s
+      At line 14 in file ex4.s
+
+STOP 0000001A
+
+Symbol: STOP
+   Definitions
+      At line 37 in file ex4.s
+   Uses
+      At line 32 in file ex4.s
+      At line 35 in file ex4.s
+      At line 38 in file ex4.s
+
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 12 in file ex4.s
+   Uses
+      None
+Comment: mycode unused
+8 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 47 in file ex4.s
+   Uses
+      None
+Comment: data unused
+1 symbol
+344 symbols in table

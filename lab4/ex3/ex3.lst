@@ -1,0 +1,164 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; Factorial of an unsigned number using recursion
+    2 00000000         
+    3 00000000                 AREA             RESET, DATA, READONLY
+    4 00000000                 EXPORT           __Vectors
+    5 00000000         
+    6 00000000         __Vectors
+    7 00000000 10001000        DCD              0x10001000
+    8 00000004 00000000        DCD              Reset_Handler
+    9 00000008         
+   10 00000008                 ALIGN
+   11 00000008         
+   12 00000008                 AREA             mycode, CODE, READONLY
+   13 00000000                 ENTRY
+   14 00000000                 EXPORT           Reset_Handler
+   15 00000000         
+   16 00000000         Reset_Handler
+   17 00000000         
+   18 00000000 480B            LDR              R0,=NUM
+   19 00000002 6800            LDR              R0,[R0]
+   20 00000004 F000 F803       BL               FACTORIAL
+   21 00000008 490A            LDR              R1,=RESULT
+   22 0000000A 6008            STR              R0,[R1]
+   23 0000000C         
+   24 0000000C         STOP
+   25 0000000C E7FE            B                STOP
+   26 0000000E         
+   27 0000000E         FACTORIAL
+   28 0000000E         
+   29 0000000E 2801            CMP              R0,#1
+   30 00000010 D909            BLS              BASE
+   31 00000012 B501            PUSH             {R0,LR}
+   32 00000014 F1A0 0001       SUB              R0,R0,#1
+   33 00000018 F7FF FFF9       BL               FACTORIAL
+   34 0000001C E8BD 4002       POP              {R1,LR}
+   35 00000020 FB01 F000       MUL              R0,R1,R0
+   36 00000024 4770            BX               LR
+   37 00000026         
+   38 00000026         BASE
+   39 00000026 F04F 0001       MOV              R0,#1
+   40 0000002A 4770            BX               LR
+   41 0000002C         
+   42 0000002C         NUM
+   43 0000002C 00000005        DCD              5
+   44 00000030         
+   45 00000030 00000000 
+              00000000         AREA             data, DATA, READWRITE
+   46 00000000         
+   47 00000000         RESULT
+   48 00000000 00000000        DCD              0
+   49 00000004         
+   50 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=ex3.d -o
+ex3.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\
+LPC17xx --predefine="__EVAL SETA 1" --list=ex3.lst ex3.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 3 in file ex3.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 6 in file ex3.s
+   Uses
+      At line 4 in file ex3.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BASE 00000026
+
+Symbol: BASE
+   Definitions
+      At line 38 in file ex3.s
+   Uses
+      At line 30 in file ex3.s
+Comment: BASE used once
+FACTORIAL 0000000E
+
+Symbol: FACTORIAL
+   Definitions
+      At line 27 in file ex3.s
+   Uses
+      At line 20 in file ex3.s
+      At line 33 in file ex3.s
+
+NUM 0000002C
+
+Symbol: NUM
+   Definitions
+      At line 42 in file ex3.s
+   Uses
+      At line 18 in file ex3.s
+Comment: NUM used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 16 in file ex3.s
+   Uses
+      At line 8 in file ex3.s
+      At line 14 in file ex3.s
+
+STOP 0000000C
+
+Symbol: STOP
+   Definitions
+      At line 24 in file ex3.s
+   Uses
+      At line 25 in file ex3.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 12 in file ex3.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESULT 00000000
+
+Symbol: RESULT
+   Definitions
+      At line 47 in file ex3.s
+   Uses
+      At line 21 in file ex3.s
+Comment: RESULT used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 45 in file ex3.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+343 symbols in table
