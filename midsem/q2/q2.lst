@@ -1,0 +1,167 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;convert 2-digit ascii into 2 hd and then do it for 5 2-
+                       digit hd numbers in ascii to their hs values
+    2 00000000         
+    3 00000000                 AREA             RESET, DATA, READONLY
+    4 00000000                 EXPORT           __Vectors
+    5 00000000         __Vectors
+    6 00000000 10001000        DCD              0x10001000  ; stack pointer val
+                                                            ue when stack is em
+                                                            pty
+    7 00000004 00000000        DCD              Reset_Handler ; reset vector
+    8 00000008                 ALIGN
+    9 00000008                 AREA             mycode, CODE, READONLY
+   10 00000000                 ENTRY
+   11 00000000                 EXPORT           Reset_Handler
+   12 00000000         
+   13 00000000         Reset_Handler
+   14 00000000         
+   15 00000000 4810            LDR              R0,=NUMS
+   16 00000002 4911            LDR              R1,=RES
+   17 00000004 F04F 0205       MOV              R2,#5
+   18 00000008         
+   19 00000008         LOOP
+   20 00000008 F810 3B01       LDRB             R3,[R0],#1
+   21 0000000C F810 4B01       LDRB             R4,[R0],#1
+   22 00000010         
+   23 00000010 2B39            CMP              R3,#'9'
+   24 00000012 BF94 F1A3 
+              0530             SUBLS            R5,R3,#0X30
+   25 00000018 F1A3 0537       SUBHI            R5,R3,#0X37
+   26 0000001C         
+   27 0000001C 2C39            CMP              R4,#'9'
+   28 0000001E BF94 F1A4 
+              0630             SUBLS            R6,R4,#0X30
+   29 00000024 F1A4 0637       SUBHI            R6,R4,#0X37
+   30 00000028         
+   31 00000028 EA4F 1505       LSL              R5,R5,#4
+   32 0000002C 19AD            ADDS             R5,R5,R6
+   33 0000002E F801 5B01       STRB             R5,[R1],#1
+   34 00000032 1E52            SUBS             R2,R2,#1
+   35 00000034 D1E8            BNE              LOOP
+   36 00000036         
+   37 00000036         STOP
+   38 00000036 E7FE            B                STOP
+   39 00000038         
+   40 00000038         NUMS
+   41 00000038 32 41 34 
+              46 31 30 
+              42 33 43 
+              37               DCB              "2A","4F","10","B3","C7"
+   42 00000042 00 00           ALIGN
+   43 00000044 00000000 
+              00000000         AREA             data, DATA, READWRITE
+   44 00000000         
+   45 00000000         RES
+   46 00000000 00 00 00 
+              00 00            SPACE            5
+   47 00000005                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=q2.d -oq
+2.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\LP
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+C17xx --predefine="__EVAL SETA 1" --list=q2.lst q2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 3 in file q2.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 5 in file q2.s
+   Uses
+      At line 4 in file q2.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LOOP 00000008
+
+Symbol: LOOP
+   Definitions
+      At line 19 in file q2.s
+   Uses
+      At line 35 in file q2.s
+Comment: LOOP used once
+NUMS 00000038
+
+Symbol: NUMS
+   Definitions
+      At line 40 in file q2.s
+   Uses
+      At line 15 in file q2.s
+Comment: NUMS used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 13 in file q2.s
+   Uses
+      At line 7 in file q2.s
+      At line 11 in file q2.s
+
+STOP 00000036
+
+Symbol: STOP
+   Definitions
+      At line 37 in file q2.s
+   Uses
+      At line 38 in file q2.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 9 in file q2.s
+   Uses
+      None
+Comment: mycode unused
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RES 00000000
+
+Symbol: RES
+   Definitions
+      At line 45 in file q2.s
+   Uses
+      At line 16 in file q2.s
+Comment: RES used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 43 in file q2.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+342 symbols in table
