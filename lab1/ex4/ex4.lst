@@ -1,0 +1,146 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         
+    4 00000000         __Vectors
+    5 00000000 10001000        DCD              0x10001000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008         
+    9 00000008                 AREA             mycode, CODE, READONLY
+   10 00000000                 ENTRY
+   11 00000000                 EXPORT           Reset_Handler
+   12 00000000         
+   13 00000000         Reset_Handler
+   14 00000000         
+   15 00000000 4807            LDR              R0, =SRC
+   16 00000002 F04F 0205       MOV              R2, #5
+   17 00000006 F04F 0124       MOV              R1, #36
+   18 0000000A         
+   19 0000000A         LOOP
+   20 0000000A 6803            LDR              R3, [R0]
+   21 0000000C 5844            LDR              R4, [R0, R1]
+   22 0000000E 5043            STR              R3, [R0, R1]
+   23 00000010 6004            STR              R4, [R0]
+   24 00000012         
+   25 00000012 F100 0004       ADD              R0, R0, #4
+   26 00000016 F1A1 0104       SUB              R1, R1, #4
+   27 0000001A         
+   28 0000001A 1E52            SUBS             R2, R2, #1
+   29 0000001C D1F5            BNE              LOOP
+   30 0000001E         
+   31 0000001E         STOP
+   32 0000001E E7FE            B                STOP
+   33 00000020         
+   34 00000020 00000000        AREA             Data_Storage, DATA, READWRITE
+   35 00000000                 ALIGN
+   36 00000000         
+   37 00000000         SRC
+   38 00000000 0000000B 
+              0000000C 
+              0000000D 
+              0000000E 
+              0000000F 
+              00000010 
+              00000011 
+              00000012 
+              00000013 
+              00000014         DCD              11, 12, 13, 14, 15, 16, 17, 18,
+ 19, 20
+   39 00000028         
+   40 00000028                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=ex4.d -o
+ex4.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\
+LPC17xx --predefine="__EVAL SETA 1" --list=ex4.lst ex4.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file ex4.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file ex4.s
+   Uses
+      At line 2 in file ex4.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LOOP 0000000A
+
+Symbol: LOOP
+   Definitions
+      At line 19 in file ex4.s
+   Uses
+      At line 29 in file ex4.s
+Comment: LOOP used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 13 in file ex4.s
+   Uses
+      At line 6 in file ex4.s
+      At line 11 in file ex4.s
+
+STOP 0000001E
+
+Symbol: STOP
+   Definitions
+      At line 31 in file ex4.s
+   Uses
+      At line 32 in file ex4.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 9 in file ex4.s
+   Uses
+      None
+Comment: mycode unused
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Data_Storage 00000000
+
+Symbol: Data_Storage
+   Definitions
+      At line 34 in file ex4.s
+   Uses
+      None
+Comment: Data_Storage unused
+SRC 00000000
+
+Symbol: SRC
+   Definitions
+      At line 37 in file ex4.s
+   Uses
+      At line 15 in file ex4.s
+Comment: SRC used once
+2 symbols
+341 symbols in table

@@ -1,0 +1,130 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;copy a 16-bit variable from code memory to data memory
+    2 00000000         
+    3 00000000                 AREA             RESET, DATA, READONLY
+    4 00000000                 EXPORT           __Vectors
+    5 00000000         __Vectors
+    6 00000000 10001000        DCD              0x10001000  ; stack pointer val
+                                                            ue when stack is em
+                                                            pty
+    7 00000004 00000000        DCD              Reset_Handler ; reset vector
+    8 00000008         
+    9 00000008                 ALIGN
+   10 00000008         
+   11 00000008                 AREA             mycode, CODE, READONLY
+   12 00000000                 ENTRY
+   13 00000000                 EXPORT           Reset_Handler
+   14 00000000         
+   15 00000000         Reset_Handler
+   16 00000000         
+   17 00000000 4803            LDR              R0,=SRC
+   18 00000002 4904            LDR              R1,=DST
+   19 00000004 6803            LDR              R3,[R0]
+   20 00000006 600B            STR              R3,[R1]
+   21 00000008         
+   22 00000008         STOP
+   23 00000008 E7FE            B                STOP
+   24 0000000A         
+   25 0000000A 08 00 34 
+              12       SRC     DCW              8,0x1234
+   26 0000000E 00 00 00000000 
+              00000000         AREA             DATASEG, DATA, READWRITE
+   27 00000000         
+   28 00000000 00000000 
+                       DST     DCD              0
+   29 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=ex1.d -o
+ex1.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\
+LPC17xx --predefine="__EVAL SETA 1" --list=ex1.lst ex1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 3 in file ex1.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 5 in file ex1.s
+   Uses
+      At line 4 in file ex1.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 15 in file ex1.s
+   Uses
+      At line 7 in file ex1.s
+      At line 13 in file ex1.s
+
+SRC 0000000A
+
+Symbol: SRC
+   Definitions
+      At line 25 in file ex1.s
+   Uses
+      At line 17 in file ex1.s
+Comment: SRC used once
+STOP 00000008
+
+Symbol: STOP
+   Definitions
+      At line 22 in file ex1.s
+   Uses
+      At line 23 in file ex1.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 11 in file ex1.s
+   Uses
+      None
+Comment: mycode unused
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DATASEG 00000000
+
+Symbol: DATASEG
+   Definitions
+      At line 26 in file ex1.s
+   Uses
+      None
+Comment: DATASEG unused
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 28 in file ex1.s
+   Uses
+      At line 18 in file ex1.s
+Comment: DST used once
+2 symbols
+341 symbols in table
