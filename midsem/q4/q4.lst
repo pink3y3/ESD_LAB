@@ -1,0 +1,168 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;You are given two hexadecimal numbers n1 and n2 stored 
+                       in code memory.
+    2 00000000         ;calculate the sum of the products of every correspondin
+                       g digit of the two numbers.
+    3 00000000         ;Store the result in data memory.
+    4 00000000         
+    5 00000000                 AREA             RESET, DATA, READONLY
+    6 00000000                 EXPORT           __Vectors
+    7 00000000         __Vectors
+    8 00000000 10001000        DCD              0x10001000  ; stack pointer val
+                                                            ue when stack is em
+                                                            pty
+    9 00000004 00000000        DCD              Reset_Handler ; reset vector
+   10 00000008                 ALIGN
+   11 00000008                 AREA             mycode, CODE, READONLY
+   12 00000000                 ENTRY
+   13 00000000                 EXPORT           Reset_Handler
+   14 00000000         
+   15 00000000         Reset_Handler
+   16 00000000         
+   17 00000000 480C            LDR              R0,=NUM1
+   18 00000002 490D            LDR              R1,=NUM2
+   19 00000004 4A0D            LDR              R2,=RES
+   20 00000006 6803            LDR              R3,[R0]
+   21 00000008 680C            LDR              R4,[R1]
+   22 0000000A F04F 0500       MOV              R5,#0
+   23 0000000E         
+   24 0000000E         LOOP
+   25 0000000E F003 060F       AND              R6,R3,#0X0F
+   26 00000012 F004 070F       AND              R7,R4,#0X0F
+   27 00000016         
+   28 00000016 FB06 F807       MUL              R8,R6,R7
+   29 0000001A 4445            ADD              R5,R5,R8
+   30 0000001C         
+   31 0000001C EA4F 1313       LSR              R3,R3,#4
+   32 00000020 EA4F 1414       LSR              R4,R4,#4
+   33 00000024         
+   34 00000024 2B00            CMP              R3,#0
+   35 00000026 D1F2            BNE              LOOP
+   36 00000028         
+   37 00000028 6015            STR              R5,[R2]
+   38 0000002A         
+   39 0000002A         STOP
+   40 0000002A E7FE            B                STOP
+   41 0000002C         
+   42 0000002C 00000038 
+                       NUM1    DCD              0x38
+   43 00000030 00000012 
+                       NUM2    DCD              0X12
+   44 00000034 00000000 
+              00000000 
+              00000000         AREA             data, DATA, READWRITE
+   45 00000000         
+   46 00000000 00000000 
+                       RES     DCD              0
+   47 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=q4.d -oq
+4.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\LP
+C17xx --predefine="__EVAL SETA 1" --list=q4.lst q4.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 5 in file q4.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 7 in file q4.s
+   Uses
+      At line 6 in file q4.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LOOP 0000000E
+
+Symbol: LOOP
+   Definitions
+      At line 24 in file q4.s
+   Uses
+      At line 35 in file q4.s
+Comment: LOOP used once
+NUM1 0000002C
+
+Symbol: NUM1
+   Definitions
+      At line 42 in file q4.s
+   Uses
+      At line 17 in file q4.s
+Comment: NUM1 used once
+NUM2 00000030
+
+Symbol: NUM2
+   Definitions
+      At line 43 in file q4.s
+   Uses
+      At line 18 in file q4.s
+Comment: NUM2 used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 15 in file q4.s
+   Uses
+      At line 9 in file q4.s
+      At line 13 in file q4.s
+
+STOP 0000002A
+
+Symbol: STOP
+   Definitions
+      At line 39 in file q4.s
+   Uses
+      At line 40 in file q4.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 11 in file q4.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RES 00000000
+
+Symbol: RES
+   Definitions
+      At line 46 in file q4.s
+   Uses
+      At line 19 in file q4.s
+Comment: RES used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 44 in file q4.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+343 symbols in table
