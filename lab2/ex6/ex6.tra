@@ -1,0 +1,19 @@
+*** Creating Trace Output File 'ex6.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"ex6.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "ex6.o" 
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x10000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\ex6.map" -o ex6.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'ex6.axf'
+### ADS-LD Command File: 'ex6.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'ex6.lnp', Handle=0x0000061C
+### Writing '.lnp' file
+### ADS-LD Command file 'ex6.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
