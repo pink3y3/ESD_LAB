@@ -1,0 +1,169 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;subtract two 32 bit numbers
+    2 00000000         
+    3 00000000                 AREA             RESET, DATA, READONLY
+    4 00000000                 EXPORT           __Vectors
+    5 00000000         
+    6 00000000         __Vectors
+    7 00000000 10001000        DCD              0x10001000
+    8 00000004 00000000        DCD              Reset_Handler
+    9 00000008         
+   10 00000008                 ALIGN
+   11 00000008                 AREA             mycode, CODE, READONLY
+   12 00000000                 ENTRY
+   13 00000000                 EXPORT           Reset_Handler
+   14 00000000         
+   15 00000000         Reset_Handler
+   16 00000000         
+   17 00000000 4807            LDR              R0,=NUM1
+   18 00000002 6801            LDR              R1,[R0]
+   19 00000004 4807            LDR              R0,=NUM2
+   20 00000006 6802            LDR              R2,[R0]
+   21 00000008 4B07            LDR              R3,=RESULT
+   22 0000000A 4291            CMP              R1,R2
+   23 0000000C D301            BLO              SUB1
+   24 0000000E 1A8C            SUBS             R4, R1,R2
+   25 00000010 E000            B                STORE
+   26 00000012         
+   27 00000012         SUB1
+   28 00000012 1A54            SUBS             R4,R2,R1
+   29 00000014         
+   30 00000014         STORE
+   31 00000014 601C            STR              R4,[R3]
+   32 00000016         STOP
+   33 00000016 E7FE            B                STOP
+   34 00000018         
+   35 00000018                 ALIGN
+   36 00000018         
+   37 00000018 0000000C 
+                       NUM1    DCD              12
+   38 0000001C 00000012 
+                       NUM2    DCD              18
+   39 00000020         
+   40 00000020 00000000 
+              00000000 
+              00000000         AREA             DATASEG, DATA, READWRITE
+   41 00000000         
+   42 00000000 00000000 
+                       RESULT  DCD              0
+   43 00000004         
+   44 00000004                 END                          ;
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=ex8.d -o
+ex8.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\
+LPC17xx --predefine="__EVAL SETA 1" --list=ex8.lst ex8.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 3 in file ex8.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 6 in file ex8.s
+   Uses
+      At line 4 in file ex8.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+NUM1 00000018
+
+Symbol: NUM1
+   Definitions
+      At line 37 in file ex8.s
+   Uses
+      At line 17 in file ex8.s
+Comment: NUM1 used once
+NUM2 0000001C
+
+Symbol: NUM2
+   Definitions
+      At line 38 in file ex8.s
+   Uses
+      At line 19 in file ex8.s
+Comment: NUM2 used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 15 in file ex8.s
+   Uses
+      At line 8 in file ex8.s
+      At line 13 in file ex8.s
+
+STOP 00000016
+
+Symbol: STOP
+   Definitions
+      At line 32 in file ex8.s
+   Uses
+      At line 33 in file ex8.s
+Comment: STOP used once
+STORE 00000014
+
+Symbol: STORE
+   Definitions
+      At line 30 in file ex8.s
+   Uses
+      At line 25 in file ex8.s
+Comment: STORE used once
+SUB1 00000012
+
+Symbol: SUB1
+   Definitions
+      At line 27 in file ex8.s
+   Uses
+      At line 23 in file ex8.s
+Comment: SUB1 used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 11 in file ex8.s
+   Uses
+      None
+Comment: mycode unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DATASEG 00000000
+
+Symbol: DATASEG
+   Definitions
+      At line 40 in file ex8.s
+   Uses
+      None
+Comment: DATASEG unused
+RESULT 00000000
+
+Symbol: RESULT
+   Definitions
+      At line 42 in file ex8.s
+   Uses
+      At line 21 in file ex8.s
+Comment: RESULT used once
+2 symbols
+344 symbols in table

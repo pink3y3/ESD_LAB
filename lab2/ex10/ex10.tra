@@ -1,0 +1,19 @@
+*** Creating Trace Output File 'ex10.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"ex10.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "ex10.o" 
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x10000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\ex10.map" -o ex10.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'ex10.axf'
+### ADS-LD Command File: 'ex10.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'ex10.lnp', Handle=0x00001450
+### Writing '.lnp' file
+### ADS-LD Command file 'ex10.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

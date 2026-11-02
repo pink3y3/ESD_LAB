@@ -1,0 +1,2 @@
+Dependencies for Project 'ex7', Target 'Target 1': (DO NOT MODIFY !)
+F (.\ex7.s)(0x6A9704E9)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\NXP\LPC17xx --list "ex7.lst" --xref -o "ex7.o" --depend "ex7.d")
